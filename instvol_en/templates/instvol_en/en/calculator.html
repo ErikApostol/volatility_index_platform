@@ -1,0 +1,63 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+  <div class="row">
+    <h2>波動率計算機</h2>
+  </div>
+  <div class="row">
+    <p>輸入指數或是股票代號，並選擇時間範圍</p>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-3">
+      <form name="color_button" method='GET'>
+        <div class="form-group disabled">
+          <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+          <label for="input-symbol">代碼(Symbol)</label>
+
+          <select class="form-control" name="symbol">
+            <option value="" disabled selected>Select Ticker</option>
+            {% for ticker in ticker_list %}
+            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <label for="input-daterange">時間範圍(Date Range)</label>
+          <input type="text" class="form-control" name="daterange"/>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">計算</button>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="panel-body">
+          <!-- Standar Form -->
+          <h4>上傳自訂檔案</h4>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+              <div class="form-group">
+							 {{ form.as_p }}
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary">上傳</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-9" id="plotly-figure">
+    {% comment %} <div id="plotly-figure"> {% endcomment %}
+      {{ plot_div|safe }}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

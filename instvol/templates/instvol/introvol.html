@@ -1,0 +1,86 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+
+    <h1>波動率簡介 (Introduction to Volatility)</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">關於波動率</a>
+    </li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">歷史波動率 (Historical Volatility)</a>
+    </li>
+       <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">瞬時波動率 (Instantaneous Volatility)</a>
+    </li>
+       <li role="presentation"><a href="#profile2_1" aria-controls="profile" role="tab" data-toggle="tab">EWMA波動率</a>
+    </li>
+       <li role="presentation"><a href="#profile2_2" aria-controls="profile" role="tab" data-toggle="tab">GARCH(1,1)波動率</a>
+    </li>
+        <li role="presentation"><a href="#profile3" aria-controls="profile" role="tab" data-toggle="tab">波動率指數 (VIX)</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div role="tabpanel" class="tab-pane active" id="home">
+   <p>
+       波動率，亦稱為波動度，在金融上被用來衡量一具風險性資產“噪音程度”。在現貨市場 (spot market) 中，例如對權益型證券 (equity security) 來說，波動率與資產報酬在實證經驗上往往存在著強烈的負相關，即所謂的槓桿效應 (leverage effect)；且波動率本身也存在著某些如均數回歸 (mean reversion)、叢聚性 (cluster)、與持續性 (persistence) 等典型特質。因此在實務上，波動率往往成為重要的估計量，以進一步提供有用的訊息給市場參與者或金融監理機構。相對的，在衍生品市場(derivative market) 中，由於選擇權市場的日益興盛，其訂價理論，如 Black-Scholes 選擇權訂價公式，的一重要參數已知為波動率。因此不論在現貨與選擇權市場或是在學術研究與實務交易上，波動率的重要性不言而喻。
+   </p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile">
+ 歷史波動率定義為一序列資產價格的標準化對數報酬率(Standardized Log Return) 的標準差。 詳細描述如下，給定資產價格的一組歷史資料，令 $S_i$ 為資產 $S$ 之時間序列的第 i個價格，
+ $\Delta t_i$ 為年化後相鄰價格的時間間隔（如 $S_i$ 均為日資料時 $\Delta t \approx 1/252$，）則（年化）歷史波動率的估計式如下：
+ \[
+ \sigma =\sqrt {\frac{1}{n-1}\sum\limits_{i=1}^n {(X_{i} - \bar{X})^{2}}}
+ \]
+
+ 其中 $X_{i} =\ln \left( {S_{i} /S_{i-1} } \right)/\sqrt {\Delta t_{i} } $
+  是價格的標準化對數報酬率， $\bar{X}$ 為其平均值，n 代表所有報酬率的總個數。
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2">
+ 顧名思義，瞬時波動率描述了一特定時間當下資產的波動情形。許多文獻試圖利用無母數方法來估計瞬時動率。例如以二次變分（quadratic variation）先計算整合波動率 (integrated volatility) 後，對總時間長度做微分，就可以用數值方法計算出近似的瞬時波動率（參見Anderson et al.(2001) 、 Zhang and Mykland  (2005) 與其中參考文獻）。 Malliavin and Mancino (2009) 指出此做法的結果並不穩定，且易受資料頻率的影響，在實務上較不可行。該文提出一無母數傅立葉轉換，在連續時間半鞅（semi-martingale）過程的架構下估計市場之瞬時波動率。由於該方法基於計算變異數過程的傅立葉係數（非計算二次變分），需要計算時間數列的積分（非微分），因此他們宣稱該方法特別適用於高頻率時間數列分析與資產的動態波動率，或較廣義的相關矩陣 (correlation matrix)，的計算。
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2_1">
+EWMA（Exponentially Weighted Moving-Average，指數加權移動平均值）是一種特殊的ARCH模型，$\sigma_n^2=\lambda\sigma_{n-1}^2+\left(1-\lambda\right)u_{n-1}^2$, 其中$\lambda\in(0,1)$，經過推導可得，$\sigma_n^2=\lambda^m\sigma_{n-m}^2+\left(1-\lambda\right)\sum_{i=1}^{m}\lambda^{i-1}u_{n-i}^2$, 隨著$m$變大，使得$\lambda^m\sigma_{n-m}^2$趨近於0，從而$\sigma_n^2=\left(1-\lambda\right)\sum_{i=1}^{m}\lambda^{i-1}u_{n-i}^2$。此模型用來描述一種特殊歷史波動率（Historical Volatility），較傳統的簡單歷史波動率（Simple Historical Volatility）有所提高，更加容易刻畫歷史波動率的群聚效應（Clustering），當然鑒於學術界對$\lambda$的取值有較大爭議，無論怎麼取值都無法避免因為模型自身引起的異方差（heteroskedasticity）缺陷。然而，EWMA因為其演算法簡單深得業界和學界的青睞。
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2_2">
+<h4>背景：</h4>
+<p>Engle (1982) 提出ARCH模型分析時間序列的異方差性以後， T. Bollerslev (1986) 又提出了GARCH模型，GARCH模型是一個專門針對金融資料所量體訂做的回歸模型，除去和普通回歸模型相同的之處，GARCH對誤差的方差進行了進一步的建模。特別適用於波動性的分析和預測，這樣的分析對投資者的決策能起到非常重要的指導性作用，其意義很多時候超過了對數值本身的分析和預測。<p>
+<h4>性質：</h4>
+<ul>
+<li>第一，群聚效應：像ARCH模型一樣，存在波動率聚集， 一個較大歷史波動率或使得相近的條件方差變大， 從而傾向於出現較大的對數收益率；</li>
+<li>第二，厚尾效應：因為其資產的對數回報為正態分佈，固其分佈是厚尾的；</li>
+<li>第三，槓桿效應：因為其不對稱的特點導致槓桿效應，因而GARCH模型給出了一個比較簡單的波動率模型。</li>
+</ul>
+</div>
+<div role="tabpanel" class="tab-pane" id="profile3">
+  <div>
+     <p>
+         每當主要的金融指數重挫時，有“恐慌指數”之稱的波動率指數 (Volatility Index, VIX) 便經常出現在一般的媒體上，成為衡量金融環境惡化程度的溫度計。當市場景氣較好時，VIX 通常維持在較溫和，例如 10%~30%， 的水準。然而在 2008 下半年爆發的全球性金融危機，VIX 曾高達 80%；在2011年8月初標準普爾信用評等公司 (Standard &amp; Poor rating company) 調降美國主權評等後，美國股票市場大跌，而VIX 也昇到 50%。
+     </p>
+     <p>
+         關於 VIX 的編制也有一段曲折的發展歷程。俗稱投資人恐慌指標 (The investor fear gauge) 的 VIX，原先在美國芝加哥選擇權交易所 （CBOE） 於1993年1月推出，以S&amp;P100指數之近月份及次月份最接近價平 的買權及賣權共八個序列的選擇權，對隱含波動率加權平均後所得之指數。2001年推出以S&amp;P500指數為計算基礎之VIX，分別計算所有近月份及次月份S&amp;P500指數選擇權之隱含波動率，再予以加權平均。而後於2003年更進一步推出以S&amp;P500指數選擇權價格加權平均後所定義出的 VIX，注意到先前都是以隱含波動率來作為定義。至此，波動率指數可說是“數學正確”了，而原有的編制指數仍然留用，只不過改稱為 VXO。
+     </p>
+     <p>
+         VIX 自從 2003年的採用了“數學正確”的定義之後，便不斷受到金融市場與學術研究上的重視。在市場上，它甚至衍生出次一級的“波動率市場”以供轉嫁波動率之風險。對金融機構投資人，例如投資銀行，由於他們在選擇權上的曝險部位需要被控制，交易波動率成為一種有效的風險管理的辦法。以VIX 為標的物之期貨於2004年3月26日在 CFE (CBOE 的期貨交易所) 開始交易，VIX 選擇權於2006年3月24日在 CFE 開始交易，三個月期的波動率指數，代號為 VXV，於2007年11月12日 開始公佈，此外與 VIX  的期限結構等都是有趣的議題，相關發展可詳見 CBOE 網頁 www.cboe.com 上的介紹。學術上也提到，例如相較歷於史波動率，VIX擁有較佳的資訊內涵， 且對實現波動率有比較好的預測能力，不過 VIX的動態行為仍呈現相當複雜的模式。
+     </p>
+
+\[
+\begin{array}{l}
+ \frac{1}{T-t}E^{\ast }\left[ {\int_t^T {\sigma_{s}^{2} } ds} \right] \\
+ =\frac{2}{T-t}\left( {r\left( {T-t} \right)+\ln \frac{S_{t}
+}{K}-\frac{e^{r\left( {T-t} \right)S_{t} }}{K}+1 +\int_K^\infty {e^{r\left(
+{T-t} \right)}C\left( {t,S_{t} ;T,k} \right)} \frac{dk}{k^{2}} +\int_0^K
+{e^{r\left( {T-t} \right)}P} \left( {t,S_{t} ;T,k} \right)\frac{dk}{k^{2}}}
+\right) \\
+ \end{array}
+\]
+
+
+ </div>
+</div>
+
+
+</div>
+</div>
+{% endblock %}

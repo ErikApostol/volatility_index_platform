@@ -1,0 +1,102 @@
+{% extends "instvol_en/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+    <div class="row">
+        <h2>Volatility Calaulator</h2>
+    </div>
+    <div class="row">
+        <p>Enter symbol and select datetime range</p>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3">
+            <form name="color_button" method='GET'>
+                <div class="form-group disabled">
+                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                    <label for="input-symbol">Symbol</label>
+
+                    <select class="form-control" name="symbol">
+                        <option value="" disabled selected>Select Ticker</option>
+                            <optgroup label="Stock indices">
+                            {% for ticker in stock_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="Volatility indices">
+                            {% for ticker in volatility_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="Equity ETFs">
+                            {% for ticker in equity_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="Bond ETFs">
+                            {% for ticker in bond_ETF_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="Commodity ETFs">
+                            {% for ticker in commodity_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="ESG ETFs">
+                            {% for ticker in sustainable_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                            <optgroup label="Others">
+                            {% for ticker in other_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <label for="input-daterange">Date Range</label>
+                    <input type="text" class="form-control" name="daterange"/>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="panel-body">
+                    <!-- Standar Form -->
+                    <h4>Upload Custom File</h4>
+                    <ul>
+                            <li>Upload CSV files only.</li>
+                            <li>The first column should be the asset prices.</li>
+                            <li>No header.</li>
+                    </ul>
+                    <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                        <div>
+                            <div class="form-group">
+							 {{ form.as_p }}
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9" id="plotly-figure">
+            {% comment %} <div id="plotly-figure"> {% endcomment %}
+            {{ plot_div|safe }}
+            <!-- Source: https://docs.djangoproject.com/en/dev/howto/static-files/ -->
+            <div class="row">Download the results: {% load static %}<a href="{% static csv_filename %}">download</a></div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "instvol_en/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+
+    <h1>Introduction to Volatility</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">About Volatility</a>
+    </li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Historical Volatility</a>
+    </li>
+       <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">Instantaneous Volatility</a>
+    </li>
+       <li role="presentation"><a href="#profile2_1" aria-controls="profile" role="tab" data-toggle="tab">EWMA Volatility</a>
+    </li>
+       <li role="presentation"><a href="#profile2_2" aria-controls="profile" role="tab" data-toggle="tab">GARCH(1,1) Volatility</a>
+    </li>
+        <li role="presentation"><a href="#profile3" aria-controls="profile" role="tab" data-toggle="tab">VIX</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div role="tabpanel" class="tab-pane active" id="home">
+   <p> Volatility is a common measurement of the 'level of noise' of risky financial assets. In the spot market, there is a strong empirical negative correlation between volatility and return on financial assets, e.g. equity securities, which is called the "leverage effect". And volatility also comes with typical traits such as mean reversion, cluster, and persistence. So participants and regulators in the spot market find abundant useful information in volatility as a significant statistic in practice. On the other hand, volatility is a major parameter of pricing models for derivatives, e.g. Black-Sholes option pricing formula. The importance of volatility cannot be emphasized, in spot and derivative markets both, and in theory and practice both.
+   </p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile">
+Historical volatility is the standard deviation of the standardized logarithmic return on a series of assets. 
+Let $S_i$ be the historical prices of a certain asset, in which $S_i$ is its price at time $i$, and $\Delta t_i$ is the amount of time, in years, between two consecutive prices ($\Delta t \approx 1/252$ if prices are given daily). Then the annualized historical volatility of the asset's price is as follows:
+ \[ 
+ \sigma =\sqrt {\frac{1}{n-1}\sum\limits_{i=1}^n {(X_{i} - \bar{X})^{2}} }
+\] in which $X_{i} =\ln \left( {S_{i} /S_{i-1} } \right)/\sqrt {\Delta t_{i} } $ is the standardized logarithmic return on the asset, $ \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i $. 
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2">
+As its name suggests, instantaneous volatility depicts an asset's fluctuation at a particular time. A great deal of literature is about estimating instantaneous volatility with non-parametric methods. One of these methods is to compute the integrated volatility using quadratic variation, differentiate it with respect to the total time, and then approximate the instantaneous volatility with numerical methods (cf. Anderson et al.(2001), Zhang and Mykland (2005) and the articles they cited). However, Malliavin and Mancino (2009) pointed out that the above-mentioned method produces unstable results, and is vulnerable to data frequency, hence is impractical. Instead they propose an estimation of instantaneous volatility using continuous-time martingales and a nonparametric Fourier transform. They claim that their method is especially suitable for high-frequency time series analysis, and computation of dynamic volatility of assets or general correlation matrices, because it is based on calculating the Fourier coefficient of variance and the integration of time series, rather than on quadratic variation and differentiation.
+We offer a detailed introduction to the estimation of instantaneous volatility using this nonparametric Fourier transform method as follows. Also notice that the parameters of a stochastic volatility model can be estimated using common estimation methods such as maximum likelihood method. 
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2_1">
+EWMA (Exponentially Weighted Moving Average) is a special ARCH model, $\sigma_n^2=\lambda\sigma_{n-1}^2+\left(1-\lambda\right)u_{n-1}^2$, in which $\lambda\in(0,1)$. The model can be rewritten as $\sigma_n^2=\lambda^m\sigma_{n-m}^2+\left(1-\lambda\right)\sum_{i=1}^{m}\lambda^{i-1}u_{n-i}^2$, from which $\sigma_n^2=\left(1-\lambda\right)\sum_{i=1}^{m}\lambda^{i-1}u_{n-i}^2$ can be derived because $\lambda^m\sigma_{n-m}^2\to0$ as $m\to\infty$. This is an enhanced version of historical volatility, and can characterize the clustering effect of historical volatility. Despite the debate on appropriate values of $\lambda$ due to the inevitable endogenous heteroskedasticity no matter what $\lambda$ is, EWMA is still favored by the financial industry and academics thanks to its algorithmic simplicity.
+</div>
+<div role="tabpanel" class="tab-pane" id="profile2_2">
+<h4>Background:</h4>
+<p>After Engle (1982) discovered heteroscedasticity of ARCH model used in the analysis of time series, T. Bollerslev (1986) proposed a GARCH model. GARCH is a regression model tailored specifically for financial data. Apart from the similarities with common regression models, GARCH further models the variance of the error. It is especially suitable for the analysis and prediction of volatility, and such analysis can play a very important guiding role for investors' decision-making. Its significance often exceeds the analysis and prediction of the value itself.</p>
+
+<h4>Properties:</h4>
+<ul>
+<li>Clustering effect: Like the ARCH model, there is volatility aggregation, which means that a large historical volatility might enlarge similar conditional variances, which tends to have a large logarithmic yield;</li>
+<li>Thick tail effect: Because the logarithmic return of its assets is normally distributed, its distribution is thick-tailed;</li>
+<li>Leverage effect: because of its asymmetry characteristics lead to leverage, so the GARCH model gives a relatively simple volatility model.</li>
+</ul>
+</div>
+<div role="tabpanel" class="tab-pane" id="profile3">
+  <div>
+<p>
+Once major financial indices tumble, Volatility Index (VIX), dubbed "panic index" or "the investor fear gauge", appears in news reports as an indicator of deterioration of financial circumstances. When the market is booming, VIX usually maintains low, around 10%-30%. On the other hand, VIX had once been 89.53% at the height of the global financial crisis in 2008, and also topped 50% when Standard & Poor downgraded the U.S. sovereign credit rating and its share markets crashed. We will discuss in detail the origin of VIX and the reason that it is widely accepted as a major indicator.
+There have been quite a few changes of the definition of VIX. In January 1993 CBOE introduced a volatility index under the trademark "VIX", which was the weighted average of the implied volatilities of the near-term and next-term S&P100 Index put and call options that were nearest to at-the-money. Then CBOE revised it in 2001 to be the weighted average of the implied volatilities of all near-term and next-term S&P500 Index options. However, the use of weighted average of implied volatilities is just for convenience, and lacks financial meanings. Finally in 2003 CBOE introduced a newly defined VIX which is the weighted (with respect to strike prices) average of the prices of S&P500 Index options. This definition is considered "mathematical correct", which means that it is supported by Black-Scholes pricing theory. But the indices under the old definitions are still used, under the ticker VXO. 
+</p>
+
+<p>
+\[
+\begin{array}{l}
+ \frac{1}{T-t}E^{\ast }\left[ {\int_t^T {\sigma_{s}^{2} } ds} \right] \\
+ =\frac{2}{T-t}\left( {r\left( {T-t} \right)+\ln \frac{S_{t}
+}{K}-\frac{e^{r\left( {T-t} \right)S_{t} }}{K}+1 +\int_K^\infty {e^{r\left(
+{T-t} \right)}C\left( {t,S_{t} ;T,k} \right)} \frac{dk}{k^{2}} +\int_0^K
+{e^{r\left( {T-t} \right)}P} \left( {t,S_{t} ;T,k} \right)\frac{dk}{k^{2}}}
+\right) \\
+ \end{array}
+\]
+</p>
+
+
+ </div>
+</div>
+
+
+</div>
+</div>
+{% endblock %}

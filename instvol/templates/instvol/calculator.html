@@ -1,0 +1,99 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+
+<div class="container about-container">
+    <div class="row">
+        <h2>波動率計算機</h2>
+    </div>
+    <div class="row">
+        <p>輸入指數或是股票代號，並選擇時間範圍</p>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3">
+            <form name="color_button" method='GET'>
+                <div class="form-group disabled">
+                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                    <label for="input-symbol">代碼(Symbol)</label>
+
+                    <select class="form-control" name="symbol">
+                        <option value="" disabled selected>Select Ticker</option>
+                        <optgroup label="股價指數">
+                            {% for ticker in stock_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="波動率指數">
+                            {% for ticker in volatility_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="股價ETF">
+                            {% for ticker in equity_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="債券ETF">
+                            {% for ticker in bond_ETF_index_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="原物料ETF">
+                            {% for ticker in commodity_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="永續ETF">
+                            {% for ticker in sustainable_ETF_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="其它">
+                            {% for ticker in other_tickers %}
+                                <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <label for="input-daterange">時間範圍(Date Range)</label>
+                    <input type="text" class="form-control" name="daterange"/>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">計算</button>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="panel-body">
+                    <!-- Standar Form -->
+                    <h4>上傳自訂檔案</h4>
+                    <h5>限上傳csv檔，第一個column必須是資產價格，且不能有header。</h5>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <div class="form-group">
+							 {{ form.as_p }}
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">上傳</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9" id="plotly-figure">
+            {% comment %} <div id="plotly-figure"> {% endcomment %}
+            <div class="row">{{ plot_div|safe }}</div>
+            <!-- Source: https://docs.djangoproject.com/en/dev/howto/static-files/ -->
+            <div class="row">計算結果下載：{% load static %}<a href="{% static csv_filename %}">download</a></div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

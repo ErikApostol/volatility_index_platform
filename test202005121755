@@ -1,0 +1,18 @@
+Binary file defaultcorr_context.p matches
+instvol_en/views.py:            symbolPair = [['SPX','NDWLIT'], ['SPX', 'FTMIGMI'], ['SPX','GBIEMDCW']]
+Binary file instvol_en/__pycache__/views.cpython-37.pyc matches
+Binary file instvol_en/__pycache__/VIXmap.cpython-37.pyc matches
+instvol_en/VIXmap.py:"FTMIGMI",
+Binary file defaultvol_context.p matches
+Binary file db.sqlite3 matches
+instvol/views.py:            symbolPair = [['SPX','NDWLIT'], ['SPX', 'FTMIGMI'], ['SPX','GBIEMDCW']]
+Binary file instvol/__pycache__/views.cpython-37.pyc matches
+Binary file instvol/__pycache__/VIXmap.cpython-37.pyc matches
+Binary file instvol/.VIXmap.py.swo matches
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",
+instvol/VIXmap.py:"FTMIGMI",

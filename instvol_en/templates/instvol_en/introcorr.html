@@ -1,0 +1,75 @@
+{% extends "instvol_en/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+
+    <h1>Introduction to Correlation</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">About Correlation</a>
+    </li>
+        <li role="presentation"><a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab">Historical Correlation</a>
+    </li>
+        <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">Instantaneous Correlation</a>
+    </li>
+    </ul>
+
+<div class="tab-content" id="myTabContent">
+  <div role="tabpanel" class="tab-pane active" id="home">
+    <p>
+We discussed the volatility estimation of the single asset (one dimension), now we expand to the high dimensional volatility matrix of the multi-asset, the key of which is the correlation between the two assets. Correlation refers to the degree of association between data or the degree of dependency, but the correlation cannot determine the causal relationship between the data.
+    In the static model, the easiest way to measure correlation is to calculate the correlation coefficient. However, in the dynamic model, the correlation process needs to be carefully estimated. The common models are EWMA, GARCH- DCC, as well as instantaneous correlation and so on.
+    Correlation is widely used in the investment field, including pair trading, asset allocation, risk management, pricing analysis of options, hedging strategies, and so on. Despite the correlation between multiple assets, the concept above is the promotion of single asset volatility to multi assets, but there is no high-dimensional version like “Volatility Index VIX”.
+    </p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile1">
+<p>
+Historical correlation coefficient is defined as the standardized log return of two asset's price sequence:
+
+ \[ \rho = Cov(X_1, X_2)/ \sigma_1 \sigma_2 
+ \]
+ \[
+ \sigma_i =\sqrt {\frac{1}{n-1}\sum\limits_{i=1}^n {(X_{i,j} - \bar{X_i})^{2}}}, i=1,2
+ \]
+
+ \[ X_{i,j} =\ln \left( {S_{i}(t_j) / S_{i}(t_{j-1}) } \right)/\sqrt {\Delta t_{i} }, i=1, \cdots , n 
+ \]
+
+ where $S_i(t_j)$ is $i$ asset's price at time $t_j$. $\Delta t_j$ is the j-th annualized time difference, for example $S_i(t_j)$ is equally spaced,  $\Delta t_j \approx 1/252$.
+</p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile2">
+<p>
+As with the definition of instantaneous volatility, assume that the natural logarithm of the $N$ asset price follow the following stochastic process:
+\[
+d \mu_i(t)= \mu_i(t) dt + \sigma_i(t) dW_i(t), i=1,2,\cdots , N
+\]
+
+Where $\mu_i$ and $\sigma_i$ are functions of $t$ representing the instantaneous growth rate and instantaneous volatility of the asset $i$, $W_i(t), i=1,2,\cdots,N$ is Standard Brownian motion, the correlation between the different assets $i, j$ is
+$dW_i (t) \cdot dW_j (t)=\rho_{ij} (t)dt$。 
+
+Further define the instantaneous covariance matrix as follows:
+\[
+\sum\limits_{i,j} (t) = \sigma_i(t) \sigma_j(t) \rho_{ij}(t),
+\]
+Then the instantaneous correlation $\rho_{ij} (t)$ is the target we want to estimate. Malliavin and Mancino (2009) demonstrated that in the frequency domain, the transient volatility matrix $\Sigma(t)$ between the asset $i$ and the asset $j$ is
+\[	
+\frac{1}{2\pi} \mathscr{F}(\Sigma_{i,j})(k) = \left( \mathscr{F}(du_i) *_B \mathscr{F}(du_j) \right)(k), \text{for } k \in Z
+\]
+Hence the instantaneous volatility matrix  $\Sigma(t)$ can be calculated using inverse Fourier transform
+
+\[	
+\Sigma_{i,j}(t) = 2\pi \mathscr{F}^{-1} \left( \mathscr{F}(du_i) *_B \mathscr{F}(du_j) \right).
+\]
+After we calculated $\Sigma_{i,j}(t), \Sigma_{i,i}(t), \Sigma_{j,i}(t)$ through inverse Fourier transform, correlation $\rho_{i,j}(t)$ is given by the following equation:
+\[
+\rho_{i,j}(t) = \Sigma_{i,j}(t) / \sigma_i (t) \sigma_j (t).
+\]
+</p>
+</div>
+
+</div>
+</div>
+{% endblock %}

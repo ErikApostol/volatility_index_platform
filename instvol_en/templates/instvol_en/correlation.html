@@ -1,0 +1,192 @@
+{% extends "instvol_en/layout.html" %}
+{% block body %}
+
+
+
+<div class="container about-container">
+    <div class="row">
+        <h2>Correlation Analysis</h2>
+    </div>
+
+    <div class="row">
+
+        <form>
+            <div class="corr-form">
+        
+                <fieldset id="additional-field-model">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12">
+                            <label class="col-md-12 control-label" for="field-a">Asset 1</label>
+                            <div class="input-group">
+                                <select id="field-a" name="field-a"   class="form-control input-md"  required="">
+                                    <option disabled="" selected="">Select</option>
+                                    <optgroup label="Stock indices">
+                                        {% for ticker in stock_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Volatility indices">
+                                        {% for ticker in volatility_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Equity ETFs">
+                                        {% for ticker in equity_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Bond ETFs">
+                                        {% for ticker in bond_ETF_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Commodity ETFs">
+                                        {% for ticker in commodity_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="ESG ETFs">
+                                        {% for ticker in sustainable_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Others">
+                                        {% for ticker in other_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-5">
+                            <label class="col-md-12 control-label" for="field-b">Asset 2</label>
+                            <div class="input-group">
+                                <select id="field-b" name="field-b"   class="form-control input-md"  required="">
+                                    <option disabled="" selected="">Select</option>
+                                    <optgroup label="Stock indices">
+                                        {% for ticker in stock_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Volatility indices">
+                                        {% for ticker in volatility_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Equity ETFs">
+                                        {% for ticker in equity_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Bond ETFs">
+                                        {% for ticker in bond_ETF_index_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Commodity ETFs">
+                                        {% for ticker in commodity_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="ESG ETFs">
+                                        {% for ticker in sustainable_ETF_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                    <optgroup label="Others">
+                                        {% for ticker in other_tickers %}
+                                            <option value="{{ticker}}" {% if symbolName == ticker %}selected{% endif %}>{{ticker}}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-7 text-right">
+                            <label class="col-xs-12 control-label" for="field-c"><br />
+                            </label>
+                            <a href="javascript:void(0);" class="btn btn-warning remove-this-field"> 
+                                <span class="hidden-xs"> Delete </span> </a> 
+                            <a href="javascript:void(0);" class="btn btn-success create-new-field"> 
+                                <span class="hidden-xs"> Add </span> 
+                            </a> 
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        
+        
+            <script>
+                $('#additional-field-model').duplicateElement({
+                "class_remove": ".remove-this-field",
+                "class_create": ".create-new-field",
+            
+                });
+            </script>
+        
+            <hr>
+        
+            <div class="form-group">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <label for="input-daterange">Date Range</label>
+                    <input type="text" class="form-control" name="daterange"/>
+            </div>
+            <div>
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+            </div>
+        
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="panel-body">
+            <!-- Standar Form -->
+            <h4>Upload Custom Data</h4>
+            <ul>
+                    <li>CSV file only.</li>
+                    <li>One pair of assets only.</li>
+                    <li>The first two columns must be asset prices.</li>
+                    <li>No header.</li>
+            </ul>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <div class="form-group">
+     			{{ form.as_p }}
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <h4> Asset Price</h4>
+        <div class="col-lg" id="plotly-figure-his">
+            {{ plot_div_spot|safe }}
+        </div>
+        <hr>
+        <h4> Historical Correlation</h4>
+        <div class="col-lg" id="plotly-figure-his">
+            {{ plot_div_his|safe }}
+        </div>
+        <hr>
+        <h4> Instantaneous Correlation</h4>
+        <div class="col-lg" id="plotly-figure">
+            {{ plot_div_inst|safe }}
+        </div>
+        <hr>
+        <!-- Source: https://docs.djangoproject.com/en/dev/howto/static-files/ -->
+        <div class="row">Download the results: {% load static %}<a href="{% static csv_filename %}">download</a></div>
+
+    </div>
+</div>
+
+<script>
+</script>
+
+{% endblock %}

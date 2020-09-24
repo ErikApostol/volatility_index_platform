@@ -1,0 +1,73 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+<div class="container about-container">
+
+    <h1>相關性簡介 (Introduction to Correlation)</h1>
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">關於相關性</a>
+    </li>
+        <li role="presentation"><a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab">歷史相關係數 (Historical Correlation)</a>
+    </li>
+        <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">瞬時相關係數 (Instantaneous Correlation)</a>
+    </li>
+    </ul>
+
+<div class="tab-content" id="myTabContent">
+  <div role="tabpanel" class="tab-pane active" id="home">
+    <p>
+    前述討論了單資產一維度的波動率估計，接下來進一步拓展至多資產的高維波動率矩陣，其中的關鍵是兩資產間的相關性。相關性泛指任意兩筆數據間的關聯 (association) 程度或是相依 (dependence) 程度，但相關性無法決定資料彼此之間的因果關係。
+    在靜態模型中，衡量相關性最簡易的方式是計算相關係數 (correlation coefficient)，但在動態模型中，相關性過程 (correlation process) 則需要被精細的估計出來，常見的模型有 EWMA，GARCH-DCC，以及瞬時相關性 (instantaneous correlation) 等等。
+    相關性的在投資面的應用相當廣泛，包括配對交易、資產配置、風險管理、選擇權的定價分析、避險策略等等。儘管多資產間的相關性，在觀念上是單一資產波動率的推廣，但目前尚未有類似「波動率指數 VIX」的高維度版本。
+    </p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile1">
+<p>
+歷史相關係數 (Historical correlation coefficient)，定義為兩資產價格的標準化對數報酬率 (Standardized Log Return) 序列的相關係數。詳細描述如下:
+
+ \[ \rho = Cov(X_1, X_2)/ \sigma_1 \sigma_2 
+ \]
+ \[
+ \sigma_i =\sqrt {\frac{1}{n-1}\sum\limits_{i=1}^n {(X_{i,j} - \bar{X_i})^{2}}}, i=1,2
+ \]
+
+ \[ X_{i,j} =\ln \left( {S_{i}(t_j) / S_{i}(t_{j-1}) } \right)/\sqrt {\Delta t_{i} }, i=1, \cdots , n 
+ \]
+
+ 其中 $S_i(t_j)$ 為第  $i$ 資產在 $t_j$ 時點的價格， $\Delta t_j$ 為年化後第j個相鄰價格的時間間隔（如 $S_i(t_j)$ 均為等距日資料時 $\Delta t_j \approx 1/252$）。
+</p>
+</div>
+
+<div role="tabpanel" class="tab-pane" id="profile2">
+<p>
+與瞬時波動率定義相同，假設有 $N$ 個標的資產的資產價格的自然對數均服從如下隨機過程:
+\[
+d \mu_i(t)= \mu_i(t) dt + \sigma_i(t) dW_i(t), i=1,2,\cdots , N
+\]
+其中 $\mu_i$ 和 $\sigma_i$ 是 $t$ 的函數，分別代表資產 $i$ 的瞬時成長率以及瞬時波動率，$W_i(t), i=1,2,\cdots,N$ 是標準布朗運動，兩個不同資產$i,j$之間的相關關係為
+$dW_i (t) \cdot dW_j (t)=\rho_{ij} (t)dt$。 
+
+進一步定義瞬時共變異數矩陣如下：
+\[
+\sum\limits_{i,j} (t) = \sigma_i(t) \sigma_j(t) \rho_{ij}(t),
+\]
+則瞬時相關性 $\rho_{ij} (t)$ 是我們想要估計的目標。Malliavin and Mancino (2009) 證明了在頻域（frequency domain）, 資產$i$和資產$j$之間的暫態波動率矩陣$\Sigma(t)$為
+\[	
+\frac{1}{2\pi} \mathscr{F}(\Sigma_{i,j})(k) = \left( \mathscr{F}(du_i) *_B \mathscr{F}(du_j) \right)(k), 對於 k \in Z
+\]
+因此瞬間波動率矩陣 $\Sigma(t)$ 可通過反傅立葉(inverse Fourier transform)轉換算出
+\[	
+\Sigma_{i,j}(t) = 2\pi \mathscr{F}^{-1} \left( \mathscr{F}(du_i) *_B \mathscr{F}(du_j) \right).
+\]
+通過傅立葉轉換的方法計算出 $\Sigma_{i,j}(t), \Sigma_{i,i}(t), \Sigma_{j,i}(t)$後，相關係數 $\rho_{i,j}(t)$ 可由下式子給出
+\[
+\rho_{i,j}(t) = \Sigma_{i,j}(t) / \sigma_i (t) \sigma_j (t).
+\]
+</p>
+</div>
+
+</div>
+</div>
+{% endblock %}

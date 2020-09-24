@@ -1,0 +1,43 @@
+{% extends "instvol_en/layout.html" %}
+{% block body %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Volatility Information Platform</h1>
+    <p>Volatility Information Platform (VIP) is a "Financial Cloud Computing" service designed to provide real-time estimates of the dynamic volatility of risky assets for academic institutions, market investors, risk managers, financial supervisors and professionals worldwide. This platform covers several volatility algorithms, focusing on "model free" volatility estimation methods, calculating historical volatility, instantaneous volatility, and volatility index (VIX). Visualized results are presented to assist users in analysis and judgment.
+</p>
+    <p><a class="btn btn-primary btn-lg" href="/vip/en/volcalculator" role="button">Go to Volatility Calculator &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Featured Case Study in Taiwan's Market</h2>(Intraday high frequency data shown by seconds）
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>2011/03/15</h2>
+      {{ plot_div_0315|safe }}
+    </div>
+    <div class="col-md-6">
+      <h2>2015/08/24</h2>
+      {{ plot_div_0824|safe }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>2011/08/05</h2>
+      {{ plot_div_0805|safe }}
+    </div>
+    <div class="col-md-6">
+      <h2>2011/08/08</h2>
+      {{ plot_div_0808|safe }}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">波動率資訊平台</h1>
+    <p>波動率資訊平台 (VIP) 是個「金融雲端計算」服務，旨在提供風險性資產之動態波動率 (dynamic volatility) 的即時估計值，以供全球的市場投資人、風險管理者、金融監理單位，以及學術單位等專業人士使用。此平台涵蓋數種波動率的演算法，著重於免模型 (Model Free) 的波動率估計方法，計算歷史波動率 (historical volatility)、瞬時波動率 (Instantaneous Volatility) 以及波動率指數 (VIX) 等等，並以視覺化的方式呈現，協助使用者進行分析與判斷。使用者也得以上傳自訂資料以比較不同演算法的結果。</p>
+    <p><a class="btn btn-primary btn-lg" href="/vip/volcalculator" role="button">前往波動率計算機 &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>國內重大波動事件範例</h2>（日內高頻秒資料, intraday high frequency data by seconds）
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>2011/03/15</h2>
+      {{ plot_div_0315|safe }}
+    </div>
+    <div class="col-md-6">
+      <h2>2015/08/24</h2>
+      {{ plot_div_0824|safe }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>2011/08/05</h2>
+      {{ plot_div_0805|safe }}
+    </div>
+    <div class="col-md-6">
+      <h2>2011/08/08</h2>
+      {{ plot_div_0808|safe }}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,447 @@
+LBEATREU
+- LBEATREU: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+XNBI
+- XNBI: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+M1CXIAMA
+- M1CXIAMA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDUEEGFA
+- NDUEEGFA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+SPX
+            Open  High   Low  Close  Volume  Dividends  Stock Splits
+Date                                                                
+2000-03-02  1.75  2.50  1.75   2.50    2562          0             0
+2000-03-03  1.87  1.87  1.87   1.87      80          0             0
+2000-03-06  2.50  2.50  2.50   2.50     240          0             0
+2000-03-07  4.37  4.37  4.37   4.37       0          0             0
+2000-03-13  2.00  2.00  2.00   2.00     817          0             0
+
+
+SPAEREDT
+- SPAEREDT: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDDLE15
+- NDDLE15: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+TWSE
+- TWSE: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+STI
+            Open  High   Low  Close  Volume  Dividends  Stock Splits
+Date                                                                
+1985-07-01   0.0  2.66  2.63   2.66  452000        0.0           0.0
+1985-07-02   0.0  2.73  2.66   2.73   98000        0.0           0.0
+1985-07-03   0.0  2.74  2.71   2.72   70800        0.0           0.0
+1985-07-05   0.0  2.74  2.71   2.73   28000        0.0           0.0
+1985-07-08   0.0  2.75  2.71   2.73   70000        0.0           0.0
+
+
+GBIEMDCW
+- GBIEMDCW: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLMATL
+- NDWLMATL: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDELCHF
+- NDELCHF: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+VIX
+               Open     High      Low    Close  Volume  Dividends  Stock Splits
+Date                                                                           
+2014-12-04  28200.4  30096.9  27953.0  28447.7  811330          0             0
+2014-12-05  26551.2  27540.7  25974.0  26056.5  377529          0             0
+2014-12-08  25231.9  26056.5  23582.8  23582.8  367585          0             0
+2014-12-09  23582.8  23582.8  21274.0  21274.0  570963          0             0
+2014-12-10  19789.7  20202.0  19212.5  19295.0  539795          0             0
+
+
+UKX
+              Open    High     Low   Close  Volume  Dividends  Stock Splits
+Date                                                                       
+2006-05-05  606.00  609.31  604.81  609.17       0          0             0
+2006-05-08  607.70  609.21  605.88  606.71       0          0             0
+2006-05-09  609.95  610.97  608.59  610.56       0          0             0
+2006-05-10  610.27  610.94  607.96  608.34       0          0             0
+2006-05-11  610.09  611.15  603.99  604.20       0          0             0
+
+
+SENSEX
+- SENSEX: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDUEACWF
+- NDUEACWF: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+LBUSTRUU
+- LBUSTRUU: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+M1EF
+- M1EF: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLCSTA
+- NDWLCSTA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+SET
+              Open    High     Low   Close  Volume  Dividends  Stock Splits
+Date                                                                       
+1996-02-28  650.85  650.85  650.85  650.85     100          0             0
+1996-02-29  640.75  640.75  640.75  640.75     100          0             0
+1996-03-01  643.75  643.75  643.75  643.75     100          0             0
+1996-03-04  645.95  645.95  645.95  645.95     100          0             0
+1996-03-05  649.20  649.20  649.20  649.20     100          0             0
+
+
+SPXT
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+2015-09-24  36.21  36.31  36.20  36.31     300        0.0             0
+2015-09-25  36.31  36.31  36.31  36.31       0        0.0             0
+2015-09-28  35.30  35.30  35.30  35.30     100        0.0             0
+2015-09-29  35.30  35.30  35.30  35.30       0        0.0             0
+2015-09-30  36.00  36.00  36.00  36.00     100        0.0             0
+
+
+M1LA
+- M1LA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLIT
+- NDWLIT: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NKY
+- NKY: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+MXBR
+- MXBR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLENR
+- NDWLENR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+LEGATRUU
+- LEGATRUU: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLTEL
+- NDWLTEL: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLHC
+- NDWLHC: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NKYNTR
+- NKYNTR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+FTMIGMI
+- FTMIGMI: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDDLCA
+- NDDLCA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NAGLAS
+- NAGLAS: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+LF94TRUU
+- LF94TRUU: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+CAC
+            Open  High   Low  Close  Volume  Dividends  Stock Splits
+Date                                                                
+1997-10-08  4.81  5.43  4.81   5.41   39600        0.0           0.0
+1997-10-09  5.41  5.46  5.41   5.46    1300        0.0           0.0
+1997-10-10  5.46  5.51  5.46   5.51   18900        0.0           0.0
+1997-10-13  5.54  5.59  5.54   5.59    2200        0.0           0.0
+1997-10-14  5.62  5.70  5.62   5.70    3600        0.0           0.0
+
+
+NDWLFNCL
+- NDWLFNCL: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+RU20INTR
+- RU20INTR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+HSI
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+1975-01-31  220.0  220.0  220.0  220.0       0          0             0
+1975-02-28  253.0  253.0  253.0  253.0       0          0             0
+1975-03-31  279.0  279.0  279.0  279.0       0          0             0
+1975-04-30  323.0  323.0  323.0  323.0       0          0             0
+1975-05-30  321.0  321.0  321.0  321.0       0          0             0
+
+
+LG30TRUU
+- LG30TRUU: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDWLUTIL
+- NDWLUTIL: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+ASXTR
+- ASXTR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+NDDUEMEA
+- NDDUEMEA: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+KOSPI
+- KOSPI: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+JPEIGLBL
+- JPEIGLBL: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+LGER
+- LGER: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+FNERTR
+- FNERTR: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+SHCOMP
+- SHCOMP: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+TYVIX
+- TYVIX: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+DSI
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+2006-11-17  41.29  41.30  41.29  41.30     200        0.0             0
+2006-11-20  41.30  41.30  41.30  41.30       0        0.0             0
+2006-11-21  41.34  41.34  41.34  41.34     100        0.0             0
+2006-11-22  41.46  41.46  41.46  41.46     100        0.0             0
+2006-11-24  41.46  41.46  41.46  41.46       0        0.0             0
+
+
+ESG
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+2016-07-14  46.84  46.86  46.83  46.83     400        0.0             0
+2016-07-15  46.76  46.76  46.76  46.76     100        0.0             0
+2016-07-18  46.76  46.76  46.76  46.76       0        0.0             0
+2016-07-19  46.76  46.76  46.76  46.76       0        0.0             0
+2016-07-20  46.76  46.76  46.76  46.76       0        0.0             0
+
+
+IAU
+            Open  High   Low  Close   Volume  Dividends  Stock Splits
+Date                                                                 
+2005-01-28  4.27  4.27  4.25   4.27  5777000          0           0.0
+2005-01-31  4.22  4.23  4.20   4.23  1519000          0           0.0
+2005-02-01  4.21  4.21  4.20   4.21   695000          0           0.0
+2005-02-02  4.22  4.22  4.20   4.22  2993000          0           0.0
+2005-02-03  4.16  4.17  4.15   4.17  1068000          0           0.0
+
+
+IEF
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+2002-07-30  47.20  47.31  47.07  47.11   41300        0.0             0
+2002-07-31  47.27  47.57  47.27  47.54   32600        0.0             0
+2002-08-01  47.55  47.76  47.54  47.73   71400        0.0             0
+2002-08-02  47.83  48.22  47.76  48.10  120300        0.0             0
+2002-08-05  48.21  48.35  48.12  48.35  159300        0.0             0
+
+
+TLT
+             Open   High    Low  Close  Volume  Dividends  Stock Splits
+Date                                                                   
+2002-07-30  43.26  43.33  43.13  43.13    6100        0.0             0
+2002-07-31  43.36  43.81  43.33  43.67   29400        0.0             0
+2002-08-01  43.67  43.93  43.67  43.92   25000        0.0             0
+2002-08-02  44.00  44.50  43.85  44.37   52800        0.0             0
+2002-08-05  44.47  44.68  44.37  44.56   61100        0.0             0
+
+
+0050.TW
+             Open   High    Low  Close    Volume  Dividends  Stock Splits
+Date                                                                     
+2007-12-31  49.38  49.58  49.06  49.38   2870000        0.0             0
+2008-01-02  48.29  49.26  48.21  48.29   4975000        0.0             0
+2008-01-03  47.49  47.69  47.09  47.49   7413000        0.0             0
+2008-01-04  47.49  47.69  46.65  47.49   7686000        0.0             0
+2008-01-07  45.32  46.28  45.24  45.32  20041000        0.0             0
+
+
+SPY
+             Open   High    Low  Close   Volume  Dividends  Stock Splits
+Date                                                                    
+1993-01-29  26.20  26.20  26.07  26.18  1003200        0.0             0
+1993-02-01  26.20  26.37  26.20  26.37   480500        0.0             0
+1993-02-02  26.35  26.44  26.30  26.43   201300        0.0             0
+1993-02-03  26.46  26.72  26.44  26.71   529400        0.0             0
+1993-02-04  26.80  26.87  26.50  26.82   531500        0.0             0
+
+
+AXJO
+- AXJO: No data found, symbol may be delisted
+Empty DataFrame
+Columns: [Open, High, Low, Close, Adj Close, Volume]
+Index: []
+
+
+000001.SS
+               Open     High      Low    Close  Volume  Dividends  Stock Splits
+Date                                                                           
+1997-07-02  1255.91  1261.57  1147.33  1199.06       0          0             0
+1997-07-03  1194.68  1194.68  1149.94  1150.62       0          0             0
+1997-07-04  1138.92  1163.25  1124.78  1159.34       0          0             0
+1997-07-07  1161.71  1163.45  1085.57  1096.82       0          0             0
+1997-07-08  1092.80  1115.43  1066.04  1109.67       0          0             0
+
+

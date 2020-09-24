@@ -1,0 +1,115 @@
+{% extends "instvol/layout.html" %}
+{% block body %}
+
+
+
+<div class="container about-container">
+    <div class="row">
+        <h2>相關性分析</h2>
+    </div>
+
+    <div class="row">
+
+        <form method="GET" action="/corr_builtin/">
+  
+            <div class="corr-form">
+    
+                <fieldset id="additional-field-model">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12">
+                            <label class="col-md-12 control-label" for="field-a">資產 1</label>
+                            <div class="input-group">
+                                <select id="field-a" name="field-a"   class="form-control input-md"  required="">
+                                    <option disabled="" selected="">選擇</option>
+                                    {% for ticker in ticker_list %}
+                                        <option value="{{ticker}}" {% if symbolName == ticker %}{% endif %}>{{ticker}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-5">
+                            <label class="col-md-12 control-label" for="field-b">資產 2</label>
+                            <div class="input-group">
+                                <select id="field-b" name="field-b"   class="form-control input-md"  required="">
+                                    <option disabled="" selected="">選擇</option>
+                                    {% for ticker in ticker_list %}
+                                        <option value="{{ticker}}" {% if symbolName == ticker %}{% endif %}>{{ticker}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-7 text-right">
+                            <label class="col-xs-12 control-label" for="field-c"><br/></label>
+                            <a href="javascript:void(0);" class="btn btn-warning remove-this-field"> <span class="hidden-xs"> 刪除 </span> </a> 
+                            <a href="javascript:void(0);" class="btn btn-success create-new-field"> <span class="hidden-xs"> 新增 </span> </a> 
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+  
+  
+            <script>
+                $('#additional-field-model').duplicateElement({"class_remove": ".remove-this-field",
+                                                               "class_create": ".create-new-field", });
+            </script>
+  
+            <hr>
+  
+            <div class="form-group">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <label for="input-daterange">時間範圍(Date Range)</label>
+                    <input type="text" class="form-control" name="daterange"/>
+            </div>
+            <div>
+                    <button type="submit" class="btn btn-primary" name="builtin_data">計算</button>
+            </div>
+        </form>
+    </div>
+  
+    <hr>
+
+    <div class="row">
+        <div class="panel-body">
+            <!-- Standar Form -->
+            <h4>上傳自訂檔案</h4>
+            <h5>限上傳csv檔，第一個column必須是資產價格，且不能有header。</h5>
+            <form method="POST" enctype="multipart/form-data" action="/corr_custom/">
+                {% csrf_token %}
+                <div>
+                    <div class="form-group">
+        		{{ form }}
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" name="custom_data">上傳</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <h4> 資產價格</h4>
+        <div class="col-lg" id="plotly-figure-his">
+            {{ plot_div_spot|safe }}
+        </div>
+        <hr>
+        <h4> 歷史相關性 (Historical Correlation)</h4>
+        <div class="col-lg" id="plotly-figure-his">
+            {{ plot_div_his|safe }}
+        </div>
+        <hr>
+        <h4> 瞬時相關性 (Instantaneous Correlation)</h4>
+        <div class="col-lg" id="plotly-figure">
+            {{ plot_div_inst|safe }}
+        </div>
+
+    </div>
+</div>
+
+<script>
+</script>
+
+{% endblock %}

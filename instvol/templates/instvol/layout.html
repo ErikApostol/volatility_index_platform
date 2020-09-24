@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8' />
+		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+
+		<title>VIP - 波動率資訊平台</title>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+		<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+		<!-- Include Date Range Picker -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+		<!-- This custom css file must be included after bootstrap -->
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static "instvol/style.css" %}"> 
+
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+					tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+				});
+		</script>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		</script>
+
+		<script type="text/javascript" src="/static/instvol/UI.js"></script>
+        <script type="text/javascript" src="/static/instvol/js/duplicateFields.min.js"></script>
+		<script type="text/javascript" src="/static/instvol/js/jquery.autocomplete.min.js"></script>
+
+	</head>
+	<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/vip/">VIP</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/vip/aboutvol">關於波動率</a></li>
+        <li><a href="/vip/volcalculator">波動率計算機</a></li>
+        <li><a href="/vip/aboutcorr">關於相關性</a></li>
+        <li><a href="/vip/corrcalculator">相關性計算機</a></li>
+      <li> <a href="/vip/en/?userlang=en">English </a>
+      </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+		{% block body %}
+		{% endblock %}
+
+		<div class="container">
+			<hr>
+			<footer>
+        <p>Developer:</p>
+        <p>Yen-An (Keene) Chen, Erik Apostol, C.H. Sean Han (<a href="http://mx.nthu.edu.tw/~chhan/" target="_blank">http://mx.nthu.edu.tw/~chhan/</a>)</p>
+			</footer>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+	</body>
+</html>
